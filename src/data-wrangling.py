@@ -2,7 +2,7 @@ import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
 pathDict={"life_expectancy":...}
-def regional(dfr,region):
+def regional(dfr,region,cols,pcols):
     y_dict={}
     if region=="Africa":
       df=dfr
@@ -48,7 +48,7 @@ def create_dim(dim):
     dfList=[df]
     regions=["Africa"]+df["region"].unique().tolist()
     for el in regions:
-      dfList.append(regional(df,el))
+      dfList.append(regional(df,el,y_c,y_p))
     ges=pd.concat(dfList)
     for el in y_p:
       del ges[el]
